@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply border-secondary-600;
+    }
+    
+    body {
+        @apply bg-gradient-to-br from-secondary-900 via-secondary-800 to-secondary-900 text-white-light font-sans;
+        min-height: 100vh;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@layer components {
+    .glass-effect {
+        @apply bg-white/5 backdrop-blur-sm border border-white/10;
+    }
+    
+    .gradient-text {
+        @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+    }
+    
+    .card-hover {
+        @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20;
+    }
+    
+    .range-slider {
+        @apply appearance-none bg-secondary-600 rounded-lg outline-none;
+    }
+    
+    .range-slider::-webkit-slider-thumb {
+        @apply appearance-none w-4 h-4 bg-primary-500 rounded-full cursor-pointer shadow-lg;
+    }
+    
+    .range-slider::-moz-range-thumb {
+        @apply w-4 h-4 bg-primary-500 rounded-full cursor-pointer border-0 shadow-lg;
+    }
+}
+
+.push-btn {
+    @apply relative inline-block px-6 py-3 rounded-xl font-semibold text-white-light;
+    background: linear-gradient(135deg, #14b8a6, #0d9488);
+    border: 1px solid rgba(20, 184, 166, 0.3);
+    box-shadow: 0 8px 32px rgba(20, 184, 166, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    text-align: center;
+}
+
+.push-btn:hover:not(:disabled) {
+    @apply scale-105;
+    background: linear-gradient(135deg, #0d9488, #0f766e);
+    box-shadow: 0 12px 40px rgba(20, 184, 166, 0.4);
+    transform: translateY(-2px);
+}
+
+.push-btn:active:not(:disabled) {
+    @apply scale-95;
+    transform: translateY(0);
+    box-shadow: 0 4px 16px rgba(20, 184, 166, 0.3);
+}
+
+.push-btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+    background: linear-gradient(135deg, #64748b, #475569);
+    box-shadow: none;
+}
+
+.chart-container {
+    @apply flex relative w-full h-96 rounded-2xl overflow-hidden;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.base {
+    @apply absolute bottom-0 left-0 w-full h-6;
+    background: linear-gradient(90deg, rgba(20, 184, 166, 0.3), rgba(20, 184, 166, 0.1));
+    transform: skewY(-2deg);
+    border-radius: 0 0 1rem 1rem;
+}
+
+.bar-container {
+    @apply flex-1 mx-1 flex items-end justify-center;
+    min-width: 20px;
+}
+
+.bar {
+    @apply relative w-full rounded-t-lg transition-all duration-300 ease-out;
+    background: linear-gradient(180deg, #14b8a6, #0d9488);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+    border: 1px solid rgba(20, 184, 166, 0.2);
+    min-height: 20px;
+    z-index: 10;
+}
+
+.bar:before {
+    content: "";
+    @apply absolute inset-0 rounded-t-lg;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0.6;
+}
+
+.bar:after {
+    content: "";
+    @apply absolute -top-1 left-0 right-0 h-1 rounded-t-lg;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+}
+
+.bar-idle {
+    background: linear-gradient(180deg, #14b8a6, #0d9488);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+}
+
+.bar-idle:before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.bar-idle:after {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+}
+
+.bar-selected {
+    background: linear-gradient(180deg, #ef4444, #dc2626);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+    animation: pulse-slow;
+}
+
+.bar-selected:before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.bar-selected:after {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+}
+
+@media screen and (max-width: 768px) {
+    .chart-container {
+        @apply h-80;
+    }
+    
+    .bar-container {
+        @apply mx-0.5;
+    }
+    
+    .bar-container p {
+        @apply text-xs;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .chart-container {
+        @apply h-64;
+    }
+    
+    .bar-container {
+        @apply mx-0;
+    }
+    
+    .bar-container p {
+        @apply text-xs;
+    }
+}
