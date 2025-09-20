@@ -5,7 +5,7 @@
 
 This project is a React.js (Vite) web application that allows users to visualize various sorting algorithms such as Bubble Sort, Insertion Sort, and more in real-time. It's a fun and educational way to learn about sorting algorithms. The user is able to adjust the speed of the sorting process, read about how each algorithm works, and get intelligent algorithm recommendations based on their specific needs.
 
-<a href="https://reactjs-sorting-visualizer.vercel.app">View Website</a>
+<a href="https://sort-sonic-ai-sorting-visualize.vercel.app">View Website</a>
 
 ## Features
 
